@@ -1,0 +1,15 @@
+{
+  "name": "Lolla Labs Casting",
+  "short_name": "LollaLabs",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#ff4fa0",
+  "icons": [
+    {
+      "src": "img/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}

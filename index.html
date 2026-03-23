@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lolla Labs | Digital Casting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff4fa0">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="app-wrapper">
+            <header class="app-header">
+                <div>
+                    <p class="eyebrow">Lolla Labs</p>
+                    <h1 class="logo">Digital Casting</h1>
+                </div>
+                <div class="header-status">
+                    <span class="status-badge" id="db-status">Banco local conectando...</span>
+                    <p class="subtitle"></p>
+                </div>
+            </header>
+
+            <main class="app-content">
+                <aside class="casting-panel">
+                    <span class="panel-kicker">Casting profile</span>
+                    <h2 class="panel-title">Apresente seu perfil com book e portfolio em um unico fluxo.</h2>
+                    <p class="panel-text">
+                        Organize dados, medidas, book fotografico e portfolio digital em um cadastro elegante,
+                        pronto para uso em desktop e celular.
+                    </p>
+
+                    <div class="panel-highlights">
+                       
+                    </div>
+                </aside>
+
+                <section class="form-panel">
+                    <section id="profile-section" class="screen active-screen">
+                        <div class="screen-header">
+                            <span class="step-chip">Etapa 1</span>
+                            <h2 class="section-title">Perfil e portfolio</h2>
+                            <p>Preencha seus dados de contato, medidas e envie seu portfolio digital.</p>
+                        </div>
+
+                        <div class="input-container">
+                            <div class="field-wrap">
+                                <label for="name">Nome completo</label>
+                                <input type="text" id="name" placeholder="Ex: Maria Souza" required>
+                            </div>
+
+                            <div class="field-wrap">
+                                <label for="email">E-mail profissional</label>
+                                <input type="email" id="email" placeholder="nome@exemplo.com" required>
+                            </div>
+
+                            <div class="field-row">
+                                <div class="field-wrap">
+                                    <label for="phone">WhatsApp</label>
+                                    <input type="tel" id="phone" placeholder="(11) 99999-9999" required>
+                                </div>
+                                <div class="field-wrap">
+                                    <label for="social">Instagram</label>
+                                    <input type="text" id="social" placeholder="@seuperfil" required>
+                                </div>
+                            </div>
+
+                            <div class="field-row">
+                                <div class="field-wrap">
+                                    <label for="height">Altura (cm)</label>
+                                    <input type="number" id="height" placeholder="175" required>
+                                </div>
+                                <div class="field-wrap">
+                                    <label for="age">Idade</label>
+                                    <input type="number" id="age" placeholder="19" required>
+                                </div>
+                            </div>
+
+                            <div class="field-wrap">
+                                <label for="portfolio-file">Portfolio digital</label>
+                                <label for="portfolio-file" class="file-card">
+                                    <span class="file-card__title">Enviar portfolio digital</span>
+                                    <span class="file-card__text">PDF, imagem ou documento com ate 10 MB.</span>
+                                </label>
+                                <input type="file" id="portfolio-file" class="file-input" accept=".pdf,.doc,.docx,image/*,application/pdf">
+                                <div id="portfolio-preview" class="info-card empty-state">Nenhum portfolio selecionado.</div>
+                            </div>
+                        </div>
+
+                        <div class="action-area">
+                            <button type="button" class="btn-primary" id="next-button">
+                                <span>Proximo: carregar book</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section id="upload-section" class="screen">
+                        <div class="screen-header">
+                            <span class="step-chip">Etapa 2</span>
+                            <h2 class="section-title">Book fotografico</h2>
+                            <p>Adicione fotos de rosto, meio corpo ou corpo inteiro para completar o casting.</p>
+                        </div>
+
+                        <div class="upload-area">
+                            <div class="drop-zone" id="drop-zone">
+                                <span class="drop-zone__prompt">Clique ou arraste fotos do book</span>
+                                <span class="drop-zone__subprompt">Aceita multiplas imagens para o cadastro.</span>
+                                <input type="file" id="files" class="drop-zone__input" multiple accept="image/*">
+                            </div>
+                        </div>
+
+                        <div id="preview-container" class="preview-grid"></div>
+
+                        <div class="summary-strip">
+                            <div class="info-card">
+                                <strong>Portfolio digital</strong>
+                                <span id="portfolio-summary">Arquivo ainda nao enviado.</span>
+                            </div>
+                            <div class="info-card">
+                                <strong>Fotos do book</strong>
+                                <span id="book-summary">Nenhuma foto adicionada.</span>
+                            </div>
+                        </div>
+
+                        <div class="action-area action-area--dual">
+                            <button type="button" class="btn-secondary" id="back-button">Voltar</button>
+                            <button type="button" class="btn-primary" id="submit-button">Finalizar e salvar casting</button>
+                        </div>
+                    </section>
+
+                    <section id="success-screen" class="screen">
+                        <div class="screen-header">
+                            <span class="step-chip">Concluido</span>
+                            <h2 class="section-title">Casting salvo</h2>
+                            <p id="success-message">Seu material foi armazenado com sucesso.</p>
+                        </div>
+
+                        <div class="success-card">
+                            <p>Os dados do perfil, o portfolio digital e as imagens do book foram enviados.</p>
+                            <button type="button" class="btn-primary" id="restart-button">Novo cadastro</button>
+                        </div>
+                    </section>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
