@@ -25,6 +25,9 @@ const portfolioSummary = document.getElementById("portfolio-summary");
 const bookSummary = document.getElementById("book-summary");
 const dbStatus = document.getElementById("db-status");
 const successMessage = document.getElementById("success-message");
+const installButton = document.getElementById("install-button");
+
+let deferredInstallPrompt = null;
 
 const textFields = ["name", "email", "phone", "social", "height", "age"].map((id) => document.getElementById(id));
 
@@ -44,6 +47,10 @@ if (submitButton) {
 
 if (restartButton) {
     restartButton.addEventListener("click", resetForm);
+}
+
+if (installButton) {
+    installButton.addEventListener("click", instalarAplicativo);
 }
 
 textFields.forEach((field) => {
@@ -105,6 +112,18 @@ if (dropZone && inputFiles) {
 renderPortfolioInfo();
 renderBookSummary();
 
+window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    installButton?.classList.remove("is-hidden");
+});
+
+window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    installButton?.classList.add("is-hidden");
+    updateDbStatus("App instalado neste dispositivo.");
+});
+
 function openDatabase() {
     return new Promise((resolve, reject) => {
         if (!("indexedDB" in window)) {
@@ -140,6 +159,22 @@ function updateDbStatus(message) {
     if (dbStatus) {
         dbStatus.textContent = message;
     }
+}
+
+async function instalarAplicativo() {
+    if (!deferredInstallPrompt) {
+        alert("A instalacao como app so aparece em navegador compativel, com HTTPS ou localhost.");
+        return;
+    }
+
+    deferredInstallPrompt.prompt();
+    const result = await deferredInstallPrompt.userChoice;
+
+    if (result.outcome === "accepted") {
+        installButton?.classList.add("is-hidden");
+    }
+
+    deferredInstallPrompt = null;
 }
 
 function setActiveScreen(activeSection, previousSection) {

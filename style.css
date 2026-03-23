@@ -119,6 +119,22 @@ label {
     color: rgba(255, 255, 255, 0.76);
 }
 
+.btn-install {
+    margin-top: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.26);
+}
+
+.btn-install:hover {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.is-hidden {
+    display: none !important;
+}
+
 .app-content {
     display: grid;
     grid-template-columns: minmax(280px, 0.92fr) minmax(320px, 1.08fr);
