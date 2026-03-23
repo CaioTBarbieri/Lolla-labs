@@ -299,7 +299,7 @@ async function finalizarCadastro() {
 
         await saveCastingRecord(db, fichaModelo);
 
-        successMessage.textContent = `Cadastro salvo para ${fichaModelo.nome}. O material esta pronto no IndexedDB local.`;
+        successMessage.textContent = `Cadastro salvo para ${fichaModelo.nome}.`;
         setActiveScreen(successScreen, uploadSection);
     } catch (error) {
         if (error?.name === "ConstraintError") {
